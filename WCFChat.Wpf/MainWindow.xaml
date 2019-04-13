@@ -1,0 +1,44 @@
+﻿<Window x:Class="WCFChat.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WCFChat.Wpf"
+        mc:Ignorable="d"
+        Title="Status: Disconnected" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBox Name="UserNameInput" Width="250" KeyUp="UserNameInput_OnKeyUp"></TextBox>
+            <Button Content="Dołącz" Click="Join" Name="JoinButton" />
+            <Label Name="ConnectionStatusLabel" />
+        </StackPanel>
+        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" />
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Name="Messages" />
+                <GridSplitter Grid.Row="1"/>
+                <DockPanel Grid.Row="2">
+                    <TextBox DockPanel.Dock="Left" IsEnabled="False" Name="UserMessageInput" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="20" Width="588" KeyUp="UserMessageInput_OnKeyUp" />
+                    <Button Content="Wyślij" IsEnabled="False" Name="SendMessageButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" Click="SendMessage" />
+                </DockPanel>
+            </Grid>
+            <GridSplitter Grid.Column="1" Width="5" />
+            <ListView Grid.Column="2" Name="UsersList"></ListView>
+        </Grid>
+    </Grid>
+</Window>
